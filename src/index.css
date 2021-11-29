@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-green {
+  color: #01d167;
+}
+
+.text-dark-blue {
+  color: #0c365a;
+}
+
+.text-secondary {
+  color: #aaaaaa;
+}
+
+.bg-green {
+  background-color: #01d167;
+}
+
+.bg-light-green {
+  background-color: #edfff5;
+}
+
+.bg-light-blue-icon {
+  background-color: #009dff1a;
+}
+
+.bg-light-green-icon {
+  background-color: #00d6b51a;
+}
+
+.bg-light-red-icon {
+  background-color: #f251951a;
+}
+
+.bg-dark-blue {
+  background-color: #0c365a;
+}
+
+.bg-dark-blue-variant-2 {
+  background-color: #325baf;
+}
+
+.bg-light-blue {
+  background-color: #edf3ff;
+}
+
+.bg-lighter-blue {
+  background-color: #f5f9ff;
+}

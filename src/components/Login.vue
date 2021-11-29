@@ -1,34 +1,45 @@
 <template>
   <div>
-    <div class="container-fluid pt-3">
-      <div class="row">
-        <main class="col-md-6 mx-auto ms-sm-auto col-lg-6 px-md-4">
-          <h2>Apply for quick loan today!!</h2>
+    <div class="container mx-auto max-w-2xl p-16">
+      <div>
+        <main>
+          <a
+            href="#"
+            @click.prevent="$root.$emit('show-or-hide-desktop')"
+            class="h-8 w-full flex items-center justify-center mb-5"
+          >
+            <img src="../assets/Logo.svg" />
+          </a>
+          <h2 class="text-2xl font-medium text-center">
+            Apply for quick loan today!!
+          </h2>
           <form @submit.prevent="registerUser">
             <div class="mb-3 mt-5">
-              <label for="username" class="form-label">User Name</label>
+              <label for="username" class="text-gray-500 mb-2">User Name</label>
               <input
                 type="text"
-                class="form-control"
+                class="w-full p-2 border border-gray-300 rounded-md"
                 id="username"
                 v-model.trim="$v.form.username.$model"
                 :class="{
-                  'is-invalid': $v.form.username.$error,
-                  'is-valid':
+                  'border-red-500': $v.form.username.$error,
+                  'border-green-500':
                     !$v.form.username.$error && $v.form.username.required,
                 }"
               />
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
+              <label for="email" class="text-gray-500 mb-2"
+                >Email address</label
+              >
               <input
                 type="email"
-                class="form-control"
+                class="w-full p-2 border border-gray-300 rounded-md"
                 id="email"
                 v-model.trim="$v.form.email.$model"
                 :class="{
-                  'is-invalid': $v.form.email.$error,
-                  'is-valid':
+                  'border-red-500': $v.form.email.$error,
+                  'border-green-500':
                     !$v.form.email.$error &&
                     $v.form.email.required &&
                     $v.form.email.email,
@@ -36,15 +47,15 @@
               />
             </div>
             <div class="mb-3">
-              <label for="amount" class="form-label">Amount</label>
+              <label for="amount" class="text-gray-500 mb-2">Amount</label>
               <input
                 type="number"
-                class="form-control"
+                class="w-full p-2 border border-gray-300 rounded-md"
                 id="amount"
                 v-model.trim="$v.form.amount.$model"
                 :class="{
-                  'is-invalid': $v.form.amount.$error,
-                  'is-valid':
+                  'border-red-500': $v.form.amount.$error,
+                  'border-green-500':
                     !$v.form.amount.$error &&
                     $v.form.amount.required &&
                     $v.form.amount.numeric,
@@ -52,37 +63,52 @@
               />
             </div>
             <fieldset>
-              <legend class="col-form-label">Tenure</legend>
-              <div class="mb-3">
+              <legend class="text-gray-500 mb-2">Tenure</legend>
+              <div class="flex space-x-6">
                 <div
-                  class="form-check form-check-inline"
+                  class="flex items-center"
                   v-for="(tenure, index) in tenures"
                   :key="index"
                 >
                   <input
-                    class="form-check-input"
+                    class="mr-2"
                     type="radio"
                     name="tenure"
                     :id="`tenureRadio${index}`"
                     :value="tenure"
                     v-model.trim="$v.form.tenure.$model"
                     :class="{
-                      'is-invalid': $v.form.tenure.$error,
-                      'is-valid':
+                      'border-red-500': $v.form.tenure.$error,
+                      'border-green-500':
                         !$v.form.tenure.$error &&
                         $v.form.tenure.required &&
                         $v.form.tenure.mustBeValidTenure,
                     }"
                   />
-                  <label
-                    class="form-check-label"
-                    :for="`tenureRadio${index}`"
-                    >{{ tenure }}</label
-                  >
+                  <label :for="`tenureRadio${index}`">{{ tenure }}</label>
                 </div>
               </div>
+              <span
+                class="text-xs text-red-500 mb-2"
+                v-if="$v.form.tenure.$error"
+                >Please select a valid tenure</span
+              >
             </fieldset>
-            <button type="submit" class="btn btn-primary">Apply Now</button>
+            <button
+              type="submit"
+              class="
+                mt-3
+                py-2
+                px-4
+                rounded-md
+                flex
+                items-center
+                text-white text-sm
+                bg-dark-blue-variant-2
+              "
+            >
+              Apply Now
+            </button>
           </form>
         </main>
       </div>
@@ -97,6 +123,7 @@ const tenures = [3, 6, 9, 12];
 const mustBeValidTenure = (value) => tenures.includes(value);
 
 export default {
+  name: "Login",
   mixins: [validationMixin],
   data() {
     return {
