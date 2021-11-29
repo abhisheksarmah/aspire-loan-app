@@ -30,6 +30,6 @@ npm run lint
 
 https://aspire-loan-app-vue.netlify.app/
 
-### Customize configuration
+## Github repo link
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://github.com/abhisheksarmah/aspire-loan-app
